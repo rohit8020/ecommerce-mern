@@ -34,7 +34,7 @@ const Orders = () => {
           <h4>Products:</h4>
           <ul>
             {order.products.map((product) => (
-              <li key={product.productId}>
+              <li key={product.productId+Math.random().toString()}>
                 Product ID: {product.productId}, Quantity: {product.quantity}
               </li>
             ))}
