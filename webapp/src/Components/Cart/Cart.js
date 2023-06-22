@@ -24,23 +24,23 @@ const Cart = () => {
     }
   };
 
-  const totalPrice = cartItems.reduce((acc, cartitem) => {
+  const totalAmount = cartItems.reduce((acc, cartitem) => {
     return acc + (cartitem.price * cartitem.quantity)
   }, 0)
 
+  const products=cartItems.map((cartitem) =>({productId:cartitem.productId,quantity:cartitem.quantity}))
+  
   const placeOrder = async () => {
-    const response = await axios.post('http://localhost:8080/cart/save', {
-        cartItems:{
-          
-        },
-        totalPrice,
+    const response = await axios.post('http://localhost:8080/order/placeOrder', {
+        products,
+        totalAmount,
       },
       {
         headers: {
-          Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDkzMmE0YTkxNzc2MWI1MzY2NTYyY2EiLCJ1c2VybmFtZSI6InJvaGl0ODAyMCIsImlhdCI6MTY4NzQ0MTE0MX0.Sa0FQI8OUdo6IMUHcYYwF9UV1Nqsvae7WgIml0lmHt8',
-          'Content-Type': 'application/json',
+            Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDkzMmE0YTkxNzc2MWI1MzY2NTYyY2EiLCJ1c2VybmFtZSI6InJvaGl0ODAyMCIsImlhdCI6MTY4NzQ0MTE0MX0.Sa0FQI8OUdo6IMUHcYYwF9UV1Nqsvae7WgIml0lmHt8',
+            'Content-Type': 'application/json',
         },
-      });
+    });
 
     console.log(response)
   }
