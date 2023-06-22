@@ -10,6 +10,8 @@ function Product({ product }) {
         setquantity(e.target.value);
     };
 
+    const token=localStorage.getItem('token');
+
     const addToCart = async (productId, quantity) => {
         try {
             console.log(productId, quantity);
@@ -18,7 +20,7 @@ function Product({ product }) {
                 { productId, quantity },
                 {
                     headers: {
-                        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDkzMmE0YTkxNzc2MWI1MzY2NTYyY2EiLCJ1c2VybmFtZSI6InJvaGl0ODAyMCIsImlhdCI6MTY4NzQ0MTE0MX0.Sa0FQI8OUdo6IMUHcYYwF9UV1Nqsvae7WgIml0lmHt8',
+                        Authorization: 'Bearer '+token,
                         'Content-Type': 'application/json',
                     },
                 }

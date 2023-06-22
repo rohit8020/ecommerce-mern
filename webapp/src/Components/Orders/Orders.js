@@ -4,16 +4,16 @@ import './Orders.css';
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
-
+  const token=localStorage.getItem('token');
   useEffect(() => {
-    fetchOrders();
-  }, []);
+    fetchOrders(token);
+  }, [token]);
 
-  const fetchOrders = async () => {
+  const fetchOrders = async (token) => {
     try {
       const response = await axios.get('http://localhost:8080/order/allOrders',{
         headers: {
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDkzMmE0YTkxNzc2MWI1MzY2NTYyY2EiLCJ1c2VybmFtZSI6InJvaGl0ODAyMCIsImlhdCI6MTY4NzQ0MTE0MX0.Sa0FQI8OUdo6IMUHcYYwF9UV1Nqsvae7WgIml0lmHt8'
+            Authorization: 'Bearer '+token
         },
     });
       setOrders(response.data.data);

@@ -4,16 +4,16 @@ import './Cart.css';
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState([])
-  
+  const token=localStorage.getItem('token');
   useEffect(() => {
-    fetchCartItems();
-  }, []);
+    fetchCartItems(token);
+  }, [token]);
 
-  const fetchCartItems = async () => {
+  const fetchCartItems = async (token) => {
     try {
       const response = await axios.get('http://localhost:8080/cart/cartItems', {
         headers: {
-          Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDkzMmE0YTkxNzc2MWI1MzY2NTYyY2EiLCJ1c2VybmFtZSI6InJvaGl0ODAyMCIsImlhdCI6MTY4NzQ0MTE0MX0.Sa0FQI8OUdo6IMUHcYYwF9UV1Nqsvae7WgIml0lmHt8',
+          Authorization: 'Bearer '+token,
           'Content-Type': 'application/json',
         },
       }); // Replace with your API endpoint
@@ -38,7 +38,7 @@ const Cart = () => {
       },
       {
         headers: {
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDkzMmE0YTkxNzc2MWI1MzY2NTYyY2EiLCJ1c2VybmFtZSI6InJvaGl0ODAyMCIsImlhdCI6MTY4NzQ0MTE0MX0.Sa0FQI8OUdo6IMUHcYYwF9UV1Nqsvae7WgIml0lmHt8',
+            Authorization: 'Bearer '+token,
             'Content-Type': 'application/json',
         },
     });
