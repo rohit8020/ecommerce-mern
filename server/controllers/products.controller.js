@@ -11,7 +11,7 @@ class ProductsController {
                 "groceries",
                 "home-decoration"
             ]
-            let allProducts = await ProductService.findProducts()
+            let allProducts = await ProductService.findProducts({})
             res.status(200).json({ success: true, data: { products: allProducts, categories } })
         } catch (err) {
             res.status(500).json({ success: false, message: err.message });

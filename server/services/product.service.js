@@ -1,8 +1,8 @@
 import Product from "../models/Product.js";
 
 class ProductService{
-    static async findProducts(){
-        const products = await Product.find();
+    static async findProducts(filter){
+        const products = await Product.find(filter);
         return products
     }
 }

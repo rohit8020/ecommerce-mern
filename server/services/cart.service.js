@@ -15,6 +15,10 @@ class CartService{
             { new: false }
         );
     }
+    static async addToCart({userId, productId, quantity}){
+        const cartItem = new Cart({ userId, productId, quantity });
+        await cartItem.save();
+    }
 }
 
 export default CartService

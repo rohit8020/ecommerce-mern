@@ -1,0 +1,40 @@
+.product-card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #f0f0f0;
+  }
+  
+  .product-thumbnail {
+    width: 100%;
+    height: auto;
+  }
+  
+  .product-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  .product-description {
+    margin-top: 5px;
+  }
+  
+  .product-info {
+    margin-top: 10px;
+  }
+  
+  .product-price {
+    font-weight: bold;
+  }
+  
+  .product-stock {
+    margin-left: 10px;
+  }
+  
+  .product-brand {
+    margin-left: 10px;
+  }
+  
+  .product-rating {
+    margin-top: 10px;
+  }

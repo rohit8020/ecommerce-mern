@@ -1,0 +1,30 @@
+/* App.css */
+.nav-links {
+  display: flex;
+  justify-content: space-around;
+  list-style-type: none;
+  background-color: #f0f0f0;
+  padding: 10px;
+}
+
+.nav-links li {
+  margin-right: 10px;
+}
+
+.content {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+}
+
+@media screen and (max-width: 768px) {
+  .nav-links {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav-links li {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+}

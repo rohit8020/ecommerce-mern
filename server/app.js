@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
+import cors from "cors";
 const app = express();
 import authRouter from "./routes/auth.routes.js";
 import AuthMiddleware from './middlewares/Auth.js'
@@ -14,6 +15,8 @@ mongoose.connect('mongodb://localhost/ecommerce-mern', {
   useUnifiedTopology: true,
 });
 
+app.use(cors())
+app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
