@@ -19,6 +19,9 @@ class CartService{
         const cartItem = new Cart({ userId, productId, quantity });
         await cartItem.save();
     }
+    static async deleteItems(filter){
+        await Cart.deleteMany(filter)
+    }
 }
 
 export default CartService

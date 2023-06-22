@@ -1,4 +1,5 @@
 import OrderService from "../services/order.service.js";
+import CartService from "../services/cart.service.js";
 
 class OrderController {
     static async getAllOrders(req,res){
@@ -17,6 +18,7 @@ class OrderController {
             const userId=req.user._id;
             const { products, totalAmount } = req.body;
             await OrderService.createOrder({ userId, products, totalAmount });
+            await CartService.deleteItems({ userId})
             res.status(201).json({success: true, message: 'Order created successfully!'});
         } catch (err) {
             res.status(500).json({ success: false, message: err.message });

@@ -25,7 +25,7 @@ const Orders = () => {
 
   return (
     <div className="orders-container">
-      <h1>Orders</h1>
+      {(orders.length)?<h1>Orders</h1>:<h1>No Orders yet!</h1>}
       {orders.map((order) => (
         <div className="order-card" key={order._id}>
           <h3>Order ID: {order._id}</h3>

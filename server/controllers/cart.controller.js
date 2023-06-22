@@ -17,12 +17,13 @@ class CartController {
                 productsMap[product._id] = product
             })
             const response = [];
-            productIds.forEach(productId => {
+            cartItems.forEach(cartItem => {
                 response.push({
-                    productId: productId,
-                    name: productsMap[productId].title,
-                    quantity: cartItemsMap[productId].quantity,
-                    price: productsMap[productId].price,
+                    productId: cartItem.productId,
+                    name: productsMap[cartItem.productId].title,
+                    quantity: cartItem.quantity,
+                    price: productsMap[cartItem.productId].price,
+                    cartItemId: cartItem._id
                 })
             })
             console.log(response)

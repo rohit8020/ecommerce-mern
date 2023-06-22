@@ -4,7 +4,7 @@ import './Cart.css';
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState([])
-
+  
   useEffect(() => {
     fetchCartItems();
   }, []);
@@ -19,6 +19,7 @@ const Cart = () => {
       }); // Replace with your API endpoint
       const data = response.data;
       setCartItems(data.data);
+      console.log(data.data);
     } catch (error) {
       console.log('Error fetching products:', error);
     }
@@ -43,20 +44,21 @@ const Cart = () => {
     });
 
     console.log(response)
+    window.location.href = '/orders'
   }
 
   return (
     <div className="cart-items-container">
-      <h2>Cart Items</h2>
+      {(cartItems.length)?(<h2>Cart Items</h2>):null}
       {cartItems.map((item) => (
-        <div className="cart-item" key={item.productId}>
+        <div className="cart-item" key={item.cartItemId}>
           <h3 className="item-name">Title : {item.name}</h3>
           <p className="item-quantity">Quantity: {item.quantity}</p>
           <p className="item-price">Price: ${item.price}</p>
           <p className="item-total">Total: ${item.quantity * item.price}</p>
         </div>
       ))}
-      <button onClick={placeOrder}>Place Order</button>
+      {(cartItems.length)?(<button onClick={placeOrder}>Place Order</button>):(<h2>Cart is Empty!</h2>)}
     </div>
   );
 };

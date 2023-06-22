@@ -5,6 +5,8 @@ import './Product.css'
 function Product({ product }) {
     const [quantity, setquantity] = useState(1);
     const handleChange = (e) => {
+        let value = e.target.value
+        if(value>=1 && value<=4)
         setquantity(e.target.value);
     };
 
@@ -21,7 +23,8 @@ function Product({ product }) {
                     },
                 }
             );
-
+            
+            window.alert("Item Added to the Cart!");
             console.log(response.data); // Optional: Handle the response from the backend
         } catch (error) {
             console.log('Error adding item to cart:', error);
