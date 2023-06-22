@@ -1,6 +1,17 @@
 import OrderService from "../services/order.service.js";
 
 class OrderController {
+    static async getAllOrders(req,res){
+        try {
+            const userId = req.user._id;
+            console.log(userId);
+            const orders=await OrderService.findOrders({userId});
+            res.status(200).json({success:true,data:orders});
+        } catch (err) {
+            res.status(500).json({ success: false, message: err.message });
+        }
+    }
+
     static async placeOrder(req, res) {
         try {
             const userId=req.user._id;
