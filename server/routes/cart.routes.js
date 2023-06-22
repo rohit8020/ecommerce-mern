@@ -6,6 +6,5 @@ const cartRouter=express.Router();
 
 cartRouter.get('/cartItems',AuthMiddleware.isLoggedIn,CartController.getCartItems)
 cartRouter.post('/addItem',AuthMiddleware.isLoggedIn,CartController.addToCart)
-cartRouter.delete('/:cartItemId',AuthMiddleware.isLoggedIn, CartController.deleteCartItem);
 
 export default cartRouter
